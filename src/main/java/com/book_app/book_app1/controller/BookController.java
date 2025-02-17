@@ -40,4 +40,12 @@ public class BookController {
         bookAppService.deleteBook(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/book/isbn/{isbn}")
+    public List<BookDTO> findBookByIsbn(@PathVariable String isbn) {
+        return bookAppService.findByISBNLike(isbn + "%");
+    }
+
+
+
+
 }

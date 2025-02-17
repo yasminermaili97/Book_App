@@ -43,13 +43,19 @@ public class BookAppImpl implements IBookAppService {
     }
 
     @Override
-    public boolean deleteBook(int id) {
+    public void deleteBook(int id) {
         if (!bookRepository.existsById(id)) {
             throw new NotFoundException("No existe un libro con el id " + id);
         }
         bookRepository.deleteById(id);
-        return true;
     }
+
+    @Override
+    public List<BookDTO> findByISBNLike(String isbn) {
+        List<BookEntity> books = bookRepository.findByISBNLike(isbn + "%");
+        return bookMapper.bookListToBookDTOList(books);
+    }
+
 
 
 }

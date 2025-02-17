@@ -8,5 +8,7 @@ public interface IBookAppService {
     List<BookDTO> getBooks(Status status);
     BookDTO getBook(int id);
     BookDTO createBook(BookDTO bookDTO);
-    boolean deleteBook(int id);
+    void deleteBook(int id);
+    List<BookDTO> findByISBNLike(String isbn);
+
 }
